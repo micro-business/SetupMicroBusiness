@@ -2,11 +2,13 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/gocql/gocql"
 )
@@ -23,6 +25,7 @@ func main() {
 	cluster.Hosts = strings.Split(cassandraHosts, ",")
 	cluster.ProtoVersion = cassandraProtoclVersion
 	cluster.Consistency = gocql.Quorum
+	cluster.Timeout = 10 * time.Second
 
 	session, err := cluster.CreateSession()
 
@@ -91,13 +94,20 @@ func runCqlScript(session *gocql.Session, errorChannel chan<- error, waitGroup *
 	scriptLines := strings.Split(string(body[:len(body)]), "\n")
 
 	for _, scriptLine := range scriptLines {
-		err = session.Query(scriptLine).Exec()
+		scriptLine = strings.TrimSpace(scriptLine)
 
-		if err != nil {
-			errorChannel <- err
+		if len(scriptLine) != 0 {
+			fmt.Println("Running command: " + scriptLine)
 
-			return
+			err = session.Query(scriptLine).Exec()
+
+			if err != nil {
+				errorChannel <- err
+
+				return
+			}
 		}
+
 	}
 
 	errorChannel <- nil
