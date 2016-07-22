@@ -35,9 +35,11 @@ func main() {
 		return
 	}
 
-	urls := [2]string{
+	urls := [4]string{
 		"https://raw.githubusercontent.com/microbusinesses/AddressService/master/DatabaseScript.cql",
-		"https://raw.githubusercontent.com/microbusinesses/UserService/master/DatabaseScript.cql"}
+		"https://raw.githubusercontent.com/microbusinesses/UserService/master/DatabaseScript.cql",
+		"https://raw.githubusercontent.com/microbusinesses/NameService/master/DatabaseScript.cql",
+		"https://raw.githubusercontent.com/microbusinesses/PersonService/master/DatabaseScript.cql"}
 
 	errorChannel := make(chan error, len(urls))
 
