@@ -37,8 +37,9 @@ func main() {
 		return
 	}
 
-	urls := [4]string{
+	urls := [5]string{
 		"https://raw.githubusercontent.com/microbusinesses/AddressService/master/DatabaseScript.cql",
+		"https://raw.githubusercontent.com/microbusinesses/TenantService/master/DatabaseScript.cql",
 		"https://raw.githubusercontent.com/microbusinesses/UserService/master/DatabaseScript.cql",
 		"https://raw.githubusercontent.com/microbusinesses/NameService/master/DatabaseScript.cql",
 		"https://raw.githubusercontent.com/microbusinesses/PersonService/master/DatabaseScript.cql"}
