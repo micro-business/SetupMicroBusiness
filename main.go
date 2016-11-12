@@ -38,11 +38,9 @@ func main() {
 	}
 
 	urls := [5]string{
-		"https://raw.githubusercontent.com/microbusinesses/AddressService/master/DatabaseScript.cql",
-		"https://raw.githubusercontent.com/microbusinesses/TenantService/master/DatabaseScript.cql",
-		"https://raw.githubusercontent.com/microbusinesses/UserService/master/DatabaseScript.cql",
-		"https://raw.githubusercontent.com/microbusinesses/NameService/master/DatabaseScript.cql",
-		"https://raw.githubusercontent.com/microbusinesses/PersonService/master/DatabaseScript.cql"}
+		"https://raw.githubusercontent.com/micro-business/AddressService/master/DatabaseScript.cql",
+		"https://raw.githubusercontent.com/micro-business/TenantService/master/DatabaseScript.cql",
+		"https://raw.githubusercontent.com/micro-business/UserService/master/DatabaseScript.cql"}
 
 	if runInParallel {
 		errorChannel := make(chan error, len(urls))
